@@ -1,5 +1,5 @@
 <style lang='stylus' scoped>
-@require '../../../src/styles/disney/var/color.styl';
+@require '../../../styles/disney/var/color.styl';
 
 .att-wait-time {
   width: 70px;

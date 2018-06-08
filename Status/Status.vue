@@ -1,5 +1,5 @@
 <style lang='stylus'>
-@require '../../../src/styles/disney/var/color.styl';
+@require '../../../styles/disney/var/color.styl';
 
 @keyframes antStatusProcessing {
   0% {
