@@ -1,15 +1,46 @@
 <style lang='stylus'>
+@require '../../../styles/disney/var/color.styl';
+
 .att-media {
-  border-radius: 5px;
+  border-radius: 100%;
   overflow: hidden;
+  position: relative;
+
+  &__icon {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    background: $color-primary;
+    text-align: center;
+    color: #FFF;
+    line-height: 1;
+    z-index: 1;
+  }
+
+  &__img {
+    z-index: 2
+    position: relative;
+  }
 
   &--finderListMobileSquare {
-    width: 48px;
-    height: 48px;
-
     &.size-small {
       width: 36px;
       height: 36px;
+
+      .att-media__icon {
+        line-height: 36px;
+      }
+    }
+
+    &.size-mini {
+      width: 28px;
+      height: 28px;
+
+      .att-media__icon {
+        line-height: 28px;
+      }
     }
   }
 
@@ -24,7 +55,10 @@
 }
 </style>
 <template>
-  <div class="att-media" :class="['att-media--' + type, 'size-' + size]"><img :src="url" alt=""></div>
+  <div class="att-media" :class="['att-media--' + type, 'size-' + size]">
+    <img class="att-media__img" :src="url" alt="">
+    <att-icon class="att-media__icon" name="attractions"></att-icon>
+  </div>
 </template>
 
 <script>
@@ -52,7 +86,7 @@ export default {
   },
 
   computed: {
-    url: function() {
+    url: function () {
       return this.medias.find(_ => _.type === this.type)['url']
     }
   },
