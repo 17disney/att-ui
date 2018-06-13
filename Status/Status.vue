@@ -25,7 +25,7 @@
   }
 
   &__text {
-    font-size: 14px;
+    font-size: 13px;
     margin-left: 8px;
     color: $color-primary-dark;
   }
@@ -78,7 +78,7 @@
 <template>
   <div class="att-status" :class="cssList[status]">
     <span class="att-status__badge"></span>
-    <span class="att-status__text">{{textList[status]}}</span>
+    <span class="att-status__text">{{$t('ds.status.' + textList[status])}}</span>
   </div>
 </template>
 
@@ -97,14 +97,16 @@ export default {
   data() {
     return {
       textList: {
-        Operating: '开放',
-        Closed: '关闭',
-        Renewal: '计划性维护',
-        Refurbishment: '计划性维护',
-        Down: '暂时关闭'
+        Operating: 'operating',
+        'Extra Magic Hours': 'extraMagicHours',
+        Closed: 'closed',
+        Renewal: 'renewal',
+        Refurbishment: 'refurbishment',
+        Down: 'down'
       },
       cssList: {
         Operating: 'static-processing',
+        'Extra Magic Hours': 'static-processing',
         Closed: 'static-default',
         Renewal: 'static-error',
         Refurbishment: 'static-error',
