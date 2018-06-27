@@ -1,77 +1,64 @@
-<style lang='stylus' scoped>
-@require '../../../styles/disney/var/color.styl';
-
+<style lang="stylus">
 .att-wait-time {
-  width: 70px;
-  // border: 1px solid $color-light-grey-sss;
-  line-height: 30px;
-  padding: 2px 8px;
-  text-align: right;
-  // background-color: #f8f8f8;
-  border-radius: 3px;
-  // color: #FFF;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  &__num {
-    flex: 1;
-    font-weight: 600;
-    font-size: 18px;
-    // color: $color-primary-dark;
-  }
-
-  &__desc {
-    // border-left: 1px solid rgba(255, 255, 255, 0.5);
-    // padding-left: 6px;
-    margin-left: 3px;
-    // line-height: 12px;
+  &__text {
     font-size: 14px;
   }
 }
 </style>
-<template>
-  <div class="att-wait-time" :class="'color-' + color">
-    <div class="att-wait-time__num">{{time}}</div>
-    <div class="att-wait-time__desc">分</div>
-  </div>
 
+<template>
+  <div class="att-wait-time" v-if="wait && wait['waitAvg']">
+    <div class="att-wait-time__num" v-if="wait.status == 'Operating'">
+      <span class="att-wait-time__text" v-if="text">等候</span>
+      <strong v-if="mode === 'avg'" class="strong">{{wait.waitAvg || 0}}</strong>
+      <strong v-else>{{wait.waitList[0][1]}}</strong>
+      <span class="att-wait-time__text" v-if="text">分钟</span>
+    </div>
+    <div class="att-wait-time__text is-red" v-else>
+      已关闭
+    </div>
+  </div>
 </template>
 
 <script>
 export default {
-  name: 'att-wait-time',
-
-  components: {},
-
   props: {
-    time: Number,
-    status: String
+    text: {
+      type: Boolean,
+      default: false
+    },
+    mode: {
+      type: String,
+      default: 'avg'
+    },
+    wait: {
+      type: Object
+    }
   },
-
   data() {
     return {
     }
   },
 
-  computed: {
+  components: {},
 
-    color() {
-      const { time } = this
-      let color = null
-      if (time < 30) {
-        color = 'primary'
-      } else if (time >= 30 && time < 60) {
-        color = 'green'
+  computed: {
+    numName() {
+      const num = this.forecast.waitAvg
+      if (num < 30) {
+        return INDEX_TYPE['green']
+      } else if (num >= 30 & num < 60) {
+        return INDEX_TYPE['yellow']
+      } if (num >= 60 & num < 120) {
+        return INDEX_TYPE['orange']
       } else {
-        color = 'red'
+        return INDEX_TYPE['red']
       }
-      return color
     }
   },
 
-  mounted() { },
-
-  methods: {}
+  mounted() { }
 }
+
 </script>
+

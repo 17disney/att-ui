@@ -20,11 +20,41 @@
   }
 
   &__img {
-    z-index: 2
+    z-index: 2;
     position: relative;
   }
 
   &--finderListMobileSquare {
+    &.size-large {
+      width: 65px;
+      height: 65px;
+
+      .att-media__icon {
+        font-size: 23px;
+        line-height: 65px;
+      }
+    }
+
+    &.size-medium {
+      width: 48px;
+      height: 48px;
+
+      .att-media__icon {
+        font-size: 18px;
+        line-height: 48px;
+      }
+    }
+
+    &.size-medium {
+      width: 48px;
+      height: 48px;
+
+      .att-media__icon {
+        font-size: 18px;
+        line-height: 48px;
+      }
+    }
+
     &.size-small {
       width: 36px;
       height: 36px;
@@ -76,7 +106,8 @@ export default {
       default: 'finderListMobileSquare'
     },
     size: {
-      type: String
+      type: String,
+      default: 'medium'
     }
   },
 

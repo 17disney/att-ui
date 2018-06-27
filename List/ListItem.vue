@@ -19,7 +19,6 @@
         <!-- {{schedulesToday.startTime}} - {{schedulesToday.endTime}} -->
       </div>
     </div>
-
   </div>
 </template>
 
