@@ -36,31 +36,21 @@
     }
 
     &.size-medium {
-      width: 48px;
-      height: 48px;
+      width: 56px;
+      height: 56px;
 
       .att-media__icon {
         font-size: 18px;
-        line-height: 48px;
-      }
-    }
-
-    &.size-medium {
-      width: 48px;
-      height: 48px;
-
-      .att-media__icon {
-        font-size: 18px;
-        line-height: 48px;
+        line-height: 56px;
       }
     }
 
     &.size-small {
-      width: 36px;
-      height: 36px;
+      width: 48px;
+      height: 48px;
 
       .att-media__icon {
-        line-height: 36px;
+        line-height: 48px;
       }
     }
 

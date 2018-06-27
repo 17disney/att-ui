@@ -22,6 +22,7 @@
 
 <script>
 export default {
+  name: 'att-wait-time',
   props: {
     text: {
       type: Boolean,
