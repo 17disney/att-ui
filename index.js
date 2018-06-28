@@ -1,5 +1,6 @@
 import Icon from './Icon'
 import List from './List'
+import Map from './Map'
 import Mark from './Mark'
 import Media from './Media'
 import Status from './Status'
@@ -10,7 +11,7 @@ function install(Vue) {
     return
   }
   install.installed = true
-  const components = [Icon, List, Mark, Media, Status, WaitTime]
+  const components = [Icon, List, Map, Mark, Media, Status, WaitTime]
   components.forEach(Component => {
     Component.install(Vue)
   })
