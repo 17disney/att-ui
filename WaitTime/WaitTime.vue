@@ -1,23 +1,10 @@
-<style lang="stylus">
-.att-wait-time {
-  &__text {
-    font-size: 14px;
-  }
-}
-</style>
-
 <template>
-  <div class="att-wait-time" v-if="wait && wait['waitAvg'] || num">
-    <div class="att-wait-time__num" v-if="wait.status == 'Operating'">
-      <span class="att-wait-time__text" v-if="text">等候</span>
+  <div class="att-wait-time" v-if="wait && wait['waitAvg']">
+    <att-mark-num v-if="wait.status == 'Operating'" :label="label" :tail="tail">
       <strong v-if="mode === 'avg'" class="strong">{{wait.waitAvg || 0}}</strong>
-      <strong v-if="mode === 'num'" class="strong">{{num || '--'}}</strong>
       <strong v-else>{{wait.waitList[0][1]}}</strong>
-      <span class="att-wait-time__text" v-if="text">分钟</span>
-    </div>
-    <div class="att-wait-time__text is-red" v-else>
-      已关闭
-    </div>
+    </att-mark-num>
+    <att-mark-num v-else tail="已关闭"></att-mark-num>
   </div>
 </template>
 
@@ -27,16 +14,13 @@ const NAME = 'att-wait-time'
 export default {
   name: NAME,
   props: {
-    num: {
-      type: [String, Number]
-    },
     text: {
       type: Boolean,
       default: false
     },
     mode: {
       type: String,
-      default: 'avg'
+      default: 'full'
     },
     wait: {
       type: Object
@@ -50,6 +34,16 @@ export default {
   components: {},
 
   computed: {
+    label() {
+      if (this.text && this.mode === 'full') {
+        return '等候'
+      }
+    },
+    tail() {
+      if (this.text) {
+        return '分钟'
+      }
+    },
     numName() {
       const num = this.forecast.waitAvg
       if (num < 30) {
