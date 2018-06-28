@@ -30,7 +30,7 @@
       height: 65px;
 
       .att-media__icon {
-        font-size: 23px;
+        font-size: 28px;
         line-height: 65px;
       }
     }
@@ -40,7 +40,7 @@
       height: 56px;
 
       .att-media__icon {
-        font-size: 18px;
+        font-size: 23px;
         line-height: 56px;
       }
     }
