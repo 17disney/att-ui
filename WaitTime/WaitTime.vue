@@ -7,10 +7,11 @@
 </style>
 
 <template>
-  <div class="att-wait-time" v-if="wait && wait['waitAvg']">
+  <div class="att-wait-time" v-if="wait && wait['waitAvg'] || num">
     <div class="att-wait-time__num" v-if="wait.status == 'Operating'">
       <span class="att-wait-time__text" v-if="text">等候</span>
       <strong v-if="mode === 'avg'" class="strong">{{wait.waitAvg || 0}}</strong>
+      <strong v-if="mode === 'num'" class="strong">{{num || '--'}}</strong>
       <strong v-else>{{wait.waitList[0][1]}}</strong>
       <span class="att-wait-time__text" v-if="text">分钟</span>
     </div>
@@ -21,9 +22,14 @@
 </template>
 
 <script>
+const NAME = 'att-wait-time'
+
 export default {
-  name: 'att-wait-time',
+  name: NAME,
   props: {
+    num: {
+      type: [String, Number]
+    },
     text: {
       type: Boolean,
       default: false
