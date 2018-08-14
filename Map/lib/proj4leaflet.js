@@ -139,7 +139,7 @@ L.Proj.CRS = L.Class.extend({
   /* Get the closest lowest element in an array */
   _closestElement: function(array, element) {
     var low
-    for (var i = array.length; i--; ) {
+    for (var i = array.length; i--;) {
       if (array[i] <= element && (low === undefined || low < array[i])) {
         low = array[i]
       }
