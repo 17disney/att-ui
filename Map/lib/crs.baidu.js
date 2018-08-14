@@ -1,3 +1,4 @@
+/* eslint-disable */
 import Proj from './proj4leaflet'
 
 const baiduCRS = new Proj.CRS(

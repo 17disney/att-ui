@@ -36,6 +36,7 @@
 | 迪士尼地图组件
 */
 
+/* eslint-disable */
 import crsBaidu from './lib/crs.baidu'
 import webdogTileLayer from './lib/webdogTileLayer'
 import MarkerCluster from './MarkerCluster'
@@ -83,7 +84,7 @@ export default {
         maxClusterRadius: 45, // 合并半径
         showCoverageOnHover: false,
         // disableClusteringAtZoom: 20
-        iconCreateFunction: function (cluster) {
+        iconCreateFunction(cluster) {
           return L.divIcon({
             className: 'att-marker att-marker--more',
             html: `

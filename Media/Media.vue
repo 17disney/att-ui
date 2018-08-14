@@ -107,7 +107,7 @@ export default {
   },
 
   computed: {
-    url: function () {
+    url() {
       return this.medias.find(_ => _.type === this.type)['url']
     }
   },

@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import L from 'leaflet'
 import proj4 from 'proj4'
 
