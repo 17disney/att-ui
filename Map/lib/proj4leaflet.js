@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import L from 'leaflet'
 import proj4 from 'proj4'
 
@@ -139,7 +141,7 @@ L.Proj.CRS = L.Class.extend({
   /* Get the closest lowest element in an array */
   _closestElement: function(array, element) {
     var low
-    for (var i = array.length; i--; ) {
+    for (var i = array.length; i--;) {
       if (array[i] <= element && (low === undefined || low < array[i])) {
         low = array[i]
       }

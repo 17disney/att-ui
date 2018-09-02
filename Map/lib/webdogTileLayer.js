@@ -1,6 +1,7 @@
+/* eslint-disable */
 import L from 'leaflet'
 L.TileLayer.WebDogTileLayer = L.TileLayer.extend({
-  getTileUrl: function (tilePoint) {
+  getTileUrl: function(tilePoint) {
     var urlArgs,
       getUrlArgs = this.options.getUrlArgs
 
@@ -17,7 +18,7 @@ L.TileLayer.WebDogTileLayer = L.TileLayer.extend({
   }
 })
 
-L.tileLayer.webdogTileLayer = function (url, options) {
+L.tileLayer.webdogTileLayer = (url, options) => {
   return new L.TileLayer.WebDogTileLayer(url, options)
 }
 

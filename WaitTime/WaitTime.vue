@@ -9,6 +9,7 @@
 </template>
 
 <script>
+/* eslint-disable */
 const NAME = 'att-wait-time'
 
 export default {

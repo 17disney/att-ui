@@ -18,7 +18,7 @@
 const NAME = 'att-mark-num'
 export default {
   name: NAME,
-  
+
   components: {},
 
   props: {
