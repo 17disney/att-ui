@@ -17,6 +17,7 @@
     color: #FFF;
     line-height: 1;
     z-index: 1;
+    font-weight: 500;
   }
 
   &__img {
@@ -50,6 +51,7 @@
       height: 48px;
 
       .att-media__icon {
+        font-size: 20px;
         line-height: 48px;
       }
     }
@@ -76,8 +78,11 @@
 </style>
 <template>
   <div class="att-media" :class="['att-media--' + type, 'size-' + size]">
-    <img class="att-media__img" :src="url" alt="">
-    <att-icon class="att-media__icon" name="attractions"></att-icon>
+    <img v-if="url" class="att-media__img" :src="url" alt="">
+    <template v-else>
+      <att-icon v-if="icon" class="att-media__icon" :name="icon"></att-icon>
+      <att-icon v-else class="att-media__icon" name="attractions"></att-icon>
+    </template>
   </div>
 </template>
 
@@ -91,6 +96,7 @@ export default {
     medias: {
       type: Array
     },
+    icon: String,
     type: {
       type: String,
       default: 'finderListMobileSquare'
@@ -101,19 +107,12 @@ export default {
     }
   },
 
-  data() {
-    return {
-    }
-  },
-
   computed: {
     url: function () {
-      return this.medias.find(_ => _.type === this.type)['url']
+      if (this.medias && this.medias.length > 0) {
+        return this.medias.find(_ => _.type === this.type)['url']
+      }
     }
-  },
-
-  mounted() {
-
   },
 
   methods: {}
